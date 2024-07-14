@@ -1,4 +1,13 @@
 #!/usr/bin/make -f
 
 %:
-	dh $@
+	dh $@ --buildsystem=golang --with=golang
+
+override_dh_auto_test:
+ifneq (,$(filter $(DEB_HOST_ARCH), arm64 armhf armel))
+	# Skip some time consuming tests, to avoid FTBFS issue
+	# on reproducible-builds.org CI tests.
+	dh_auto_test -O--buildsystem=golang -- -short
+else
+	dh_auto_test -O--buildsystem=golang
+endif

@@ -1,15 +1,31 @@
-Source: template-repository
-Section: unknown
+Source: golang-github-klauspost-reedsolomon
+Section: devel
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders:
+ Free Ekanayaka <freee@debian.org>,
+ Roger Shimizu <rosh@debian.org>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-golang,
+ golang-any,
+ golang-github-klauspost-cpuid-dev (>= 2.0.6)
+Standards-Version: 4.5.1
+Rules-Requires-Root: no
+Homepage: https://github.com/klauspost/reedsolomon
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-klauspost-reedsolomon
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-klauspost-reedsolomon.git
+XS-Go-Import-Path: github.com/klauspost/reedsolomon
+Testsuite: autopkgtest-pkg-go
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: golang-github-klauspost-reedsolomon-dev
+Architecture: all
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         golang-github-klauspost-cpuid-dev (>= 2.0.6)
+Description: Reed-Solomon Erasure Coding in Go
+ Reed-Solomon Erasure Coding in Go, with speeds exceeding 1GB/s/cpu core
+ implemented in pure Go.
+ .
+ This is a golang port of the JavaReedSolomon library released by
+ Backblaze (http://backblaze.com), with some additional optimizations.
