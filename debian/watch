@@ -1,0 +1,5 @@
+version=4
+
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%golang-github-klauspost-reedsolomon_$1.orig.tar.gz%" \
+   https://github.com/klauspost/reedsolomon/tags \
+   (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate
